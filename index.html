@@ -269,7 +269,7 @@
     </div>
 
     <div class="footer">
-        Aplikasi Generator Kartu NPWP dengan teknologi terkini.<br>
+        Aplikasi Generator Kartu BPJSTK dengan teknologi terkini.<br>
         Dikembangkan oleh <span style="color: var(--primary-green);">Z-TRONIK</span>
     </div>
 
@@ -464,7 +464,7 @@
         async function downloadImage(format) {
             const canvas = await html2canvas(document.getElementById('card-wrapper'), { scale: 2, useCORS: true });
             const link = document.createElement('a');
-            link.download = `Kartu_BPJS_${inputNama.value || 'Peserta'}.${format}`;
+            link.download = `Kartu_BPJSTK_${inputNama.value || 'Peserta'}.${format}`;
             link.href = canvas.toDataURL(format === 'jpg' ? 'image/jpeg' : 'image/png');
             link.click();
         }
@@ -474,7 +474,7 @@
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: [171.2, 53.98] });
             doc.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 171.2, 53.98);
-            doc.save(`Kartu_BPJS_${inputNama.value || 'Peserta'}.pdf`);
+            doc.save(`Kartu_BPJSTK_${inputNama.value || 'Peserta'}.pdf`);
         }
 
         function openSaweria() {
