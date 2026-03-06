@@ -86,24 +86,29 @@
         #inputNama { text-transform: uppercase; }
         input.invalid { border-color: #e74c3c; background-color: #fdf2f1; }
         .error-msg { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; font-weight: 600; }
+        
+        .warning-msg { color: #e74c3c; font-size: 14px; margin-top: 15px; padding: 12px; background-color: #fdf2f1; border-left: 4px solid #e74c3c; border-radius: 4px; display: block; font-weight: 600; text-align: center; }
 
         .btn-download-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; width: 100%; max-width: 500px; }
 
         button {
             flex: 1; 
-            padding: 12px; 
+            padding: 14px 10px; 
             color: white; 
             border: none;
             border-radius: 6px; 
             cursor: pointer; 
             font-weight: bold; 
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.2s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.4;
         }
 
-        .btn-reset { background-color: #e74c3c; width: 100%; margin-bottom: 10px;}
+        .btn-reset { background-color: #e74c3c; width: 100%; margin-bottom: 10px; padding: 14px 10px; white-space: normal; word-wrap: break-word; line-height: 1.4; }
         .btn-reset:hover { background-color: #c0392b; transform: translateY(-2px); }
         .btn-download { background-color: var(--primary-green); }
         .btn-download:hover:not(:disabled) { background-color: var(--dark-green); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); }
@@ -206,17 +211,17 @@
     <div class="form-container">
         <form id="dataForm">
             <div class="form-group">
-                <label for="inputNik">NIK KTP (16 Digit)</label>
+                <label for="inputNik">NIK (16 Digit)</label>
                 <input type="text" id="inputNik" placeholder="Masukkan 16 Digit NIK" maxlength="16" inputmode="numeric">
                 <div id="errorNik" class="error-msg">NIK harus terdiri dari 16 digit angka.</div>
             </div>
             <div class="form-group">
                 <label for="inputKpj">Nomor Peserta (KPJ)</label>
-                <input type="text" id="inputKpj" placeholder="Masukkan Nomor Peserta BPJS">
+                <input type="text" id="inputKpj" placeholder="Masukkan Nomor Peserta">
             </div>
             <div class="form-group">
                 <label for="inputNama">Nama Lengkap</label>
-                <input type="text" id="inputNama" placeholder="NAMA SESUAI KTP">
+                <input type="text" id="inputNama" placeholder="Masukkan Nama Sesuai KTP">
             </div>
             <div class="form-group">
                 <label for="inputTgl">Tanggal Terdaftar</label>
@@ -225,6 +230,7 @@
             </div>
             
             <button type="button" class="btn-reset" onclick="confirmReset()">Reset / Isi Ulang Form</button>
+            <div id="warningMsg" class="warning-msg">⚠️ Harap lengkapi semua data form dengan benar sebelum mengunduh kartu!</div>
         </form>
     </div>
 
@@ -244,7 +250,7 @@
         <button id="btnJpg" class="btn-download" onclick="downloadImage('jpg')" disabled>Unduh JPG</button>
         <button id="btnPng" class="btn-download" onclick="downloadImage('png')" disabled>Unduh PNG</button>
         <button id="btnPdf" class="btn-download" onclick="downloadPDF()" disabled>Unduh PDF</button>
-        <button class="btn-saweria" onclick="openSaweria()"><img src="https://saweria.co/favicon.ico" alt="Saweria" style="height: 16px;"> Dukung via Saweria</button>
+        <button class="btn-saweria" onclick="openSaweria()"><img src="https://saweria.co/favicon.ico" alt="Saweria" style="height: 16px;">Dukung via Saweria</button>
     </div>
 
     <div class="footer">
@@ -421,6 +427,10 @@
             btnJpg.disabled = !isAllValid;
             btnPng.disabled = !isAllValid;
             btnPdf.disabled = !isAllValid;
+            
+            // Tampilkan warning message jika belum valid (termasuk saat kosong)
+            const warningMsg = document.getElementById('warningMsg');
+            warningMsg.style.display = !isAllValid ? 'block' : 'none';
         }
 
         function confirmReset() {
@@ -454,8 +464,7 @@
 
         function openSaweria() {
             // Ganti URL di bawah dengan URL akun Saweria Anda
-            // Contoh: https://saweria.co/ztronik
-            // Contoh: https://saweria.co/ztronik
+            // Contoh: https://saweria.co/username_anda
             const saweriaUrl = 'https://saweria.co/ztronik'; // Ubah ke link akun Saweria Anda di sini
             window.open(saweriaUrl, '_blank');
         }
