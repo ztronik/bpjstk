@@ -87,7 +87,7 @@
         input.invalid { border-color: #e74c3c; background-color: #fdf2f1; }
         .error-msg { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; font-weight: 600; }
 
-        .btn-download-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; width: 100%; max-width: 500px; }
+        .btn-download-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; width: 100%; max-width: 500px; }
 
         button {
             flex: 1; 
@@ -111,15 +111,15 @@
         
         #btnJpg { background-color: #3498db; color: white; }
         #btnJpg:hover:not(:disabled) { background-color: #2980b9; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3); }
-        #btnJpg:disabled { background-color: #95a5a6; color: #ecf0f1; cursor: not-allowed; }
+        #btnJpg:disabled { background-color: #5dade2; color: white; cursor: not-allowed; opacity: 0.6; }
         
         #btnPng { background-color: #f1c40f; color: white; }
         #btnPng:hover:not(:disabled) { background-color: #f39c12; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(241, 196, 15, 0.3); }
-        #btnPng:disabled { background-color: #95a5a6; color: #ecf0f1; cursor: not-allowed; }
+        #btnPng:disabled { background-color: #f1c40f; color: white; cursor: not-allowed; opacity: 0.6; }
         
         #btnPdf { background-color: #27ae60; color: white; }
         #btnPdf:hover:not(:disabled) { background-color: #1e8449; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); }
-        #btnPdf:disabled { background-color: #95a5a6; color: #ecf0f1; cursor: not-allowed; }
+        #btnPdf:disabled { background-color: #27ae60; color: white; cursor: not-allowed; opacity: 0.6; }
         
         .btn-saweria { background-color: #ff8c42; color: white; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .btn-saweria:hover { background-color: #ff7a22; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 140, 66, 0.3); }
@@ -219,7 +219,7 @@
                 <input type="text" id="inputNama" placeholder="NAMA SESUAI KTP">
             </div>
             <div class="form-group">
-                <label for="inputTgl">Tanggal Terdaftar (Pilih Salah Satu)</label>
+                <label for="inputTgl">Tanggal Terdaftar</label>
                 <input type="text" id="inputTgl" placeholder="DD-MM-YYYY atau MM-YYYY" maxlength="10">
                 <div id="errorTgl" class="error-msg">Format tidak valid. Ketik sesuai format DD-MM-YYYY atau MM-YYYY.</div>
             </div>
@@ -244,7 +244,7 @@
         <button id="btnJpg" class="btn-download" onclick="downloadImage('jpg')" disabled>Unduh JPG</button>
         <button id="btnPng" class="btn-download" onclick="downloadImage('png')" disabled>Unduh PNG</button>
         <button id="btnPdf" class="btn-download" onclick="downloadPDF()" disabled>Unduh PDF</button>
-        <button class="btn-saweria" onclick="openSaweria()"><img src="https://saweria.co/favicon.ico" alt="Saweria" style="height: 16px;"> Saweria</button>
+        <button class="btn-saweria" onclick="openSaweria()"><img src="https://saweria.co/favicon.ico" alt="Saweria" style="height: 16px;"> Dukung via Saweria</button>
     </div>
 
     <div class="footer">
@@ -453,9 +453,12 @@
         }
 
         function openSaweria() {
-            window.open('https://saweria.co/ztronik', '_blank');
+            // Ganti URL di bawah dengan URL akun Saweria Anda
+            // Contoh: https://saweria.co/ztronik
+            // Contoh: https://saweria.co/ztronik
+            const saweriaUrl = 'https://saweria.co/ztronik'; // Ubah ke link akun Saweria Anda di sini
+            window.open(saweriaUrl, '_blank');
         }
     </script>
 </body>
-
 </html>
