@@ -126,8 +126,23 @@
         #btnPdf:hover:not(:disabled) { background-color: #1e8449; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3); }
         #btnPdf:disabled { background-color: #27ae60; color: white; cursor: not-allowed; opacity: 0.6; }
         
-        .btn-saweria { background-color: #ff8c42; color: white; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .btn-saweria:hover { background-color: #ff7a22; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255, 140, 66, 0.3); }
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 140, 66, 0.7);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 0 12px rgba(255, 140, 66, 0);
+                transform: scale(1.02);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 140, 66, 0);
+                transform: scale(1);
+            }
+        }
+
+        .btn-saweria { background-color: #ff8c42; color: white; display: flex; align-items: center; justify-content: center; gap: 6px; animation: pulseGlow 2s infinite; }
+        .btn-saweria:hover { background-color: #ff7a22; transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 10px rgba(255, 140, 66, 0.3); }
 
         /* --- WRAPPER UNTUK KARTU DEPAN-BELAKANG --- */
         .card-scroll-container {
@@ -217,11 +232,11 @@
             </div>
             <div class="form-group">
                 <label for="inputKpj">Nomor Peserta (KPJ)</label>
-                <input type="text" id="inputKpj" placeholder="Masukkan Nomor Peserta">
+                <input type="text" id="inputKpj" placeholder="Masukkan Nomor Peserta BPJS">
             </div>
             <div class="form-group">
                 <label for="inputNama">Nama Lengkap</label>
-                <input type="text" id="inputNama" placeholder="Masukkan Nama Sesuai KTP">
+                <input type="text" id="inputNama" placeholder="MASUKKAN NAMA SESUAI KTP">
             </div>
             <div class="form-group">
                 <label for="inputTgl">Tanggal Terdaftar</label>
