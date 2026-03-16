@@ -240,7 +240,7 @@
             </div>
             <div class="form-group">
                 <label for="inputTgl">Tanggal Terdaftar</label>
-                <input type="text" id="inputTgl" placeholder="DD-MM-YYYY atau MM-YYYY" maxlength="10">
+                <input type="text" id="inputTgl" placeholder="DD-MM-YYYY atau MM-YYYY" maxlength="10" inputmode="numeric">
                 <div id="errorTgl" class="error-msg">Format tidak valid. Ketik sesuai format DD-MM-YYYY atau MM-YYYY.</div>
             </div>
             
@@ -325,9 +325,11 @@
             checkFormAndRender();
         });
 
-        // LOCK TANGGAL: Hanya izinkan input angka 
+        // LOCK TANGGAL: Hanya izinkan input angka dan dash (-)
         inputTgl.addEventListener('keypress', (e) => {
-            if (e.which < 48 || e.which > 57) {
+            const charCode = e.which;
+            // Izinkan angka (48-57) dan tidak izinkan karakter lain kecuali dash
+            if ((charCode < 48 || charCode > 57) && charCode !== 45) {
                 e.preventDefault();
             }
         });
